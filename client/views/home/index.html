@@ -1,0 +1,137 @@
+<head>
+  <title>Indie For Hire</title>
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container-full">
+    <div class="pull-right">
+      <h4 style="margin-right:10px;">Sign In / Sign Up</h4>
+    </div>
+
+    <div class="row col-lg-12 text-center v-center">
+      <h1>INDIE FOR HIRE</h1>
+      <p class="lead">need indie. work indie. hire indie.</p>
+      <br>
+
+      {{> matchMakerForm}}
+    </div><!-- /row -->
+
+    {{> socialIcons}}
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div><!-- /container-full -->
+
+  <div class="container">
+    <hr>
+
+    {{> footer}}
+    {{> copyright}}
+  </div>
+</body>
+
+<template name="positionOptions">
+  <option>
+    Programmer
+  </option>
+
+  <option>
+    Graphics Designer
+  </option>
+
+  <option>
+    Writer
+  </option>
+</template>
+
+<template name="matchMakerForm">
+  <form class="col-lg-12">
+    <div class="input-group" style="width:400px;text-align:center;margin:0 auto;">
+      <h4>I am a ...</h4>
+      <select class="form-control">
+        {{> positionOptions}}
+      </select>
+
+      <h4>Seeking a ...</h4>
+      <select class="form-control">
+        {{> positionOptions}}
+      </select>
+
+      <button class="btn btn-lg btn-primary" style="margin-top:20px;" type="button">
+        Find a match!
+      </button>
+    </div>
+  </form>
+</template>
+
+<template name="socialIcons">
+  <div class="row col-lg-12 text-center v-center" style="font-size: 39pt;">
+    <a style="color: #efefef; text-decoration: none;" class="icon-google-plus" href="#"></a>
+   	<a style="color: #efefef; text-decoration: none;" class="icon-facebook" href="#"></a>
+  	<a style="color: #efefef; text-decoration: none;" class="icon-twitter" href="#"></a>
+    <a style="color: #efefef; text-decoration: none;" class="icon-github" href="#"></a>
+    <a style="color: #efefef; text-decoration: none;" class="icon-pinterest" href="#"></a>
+  </div>
+</template>
+
+<template name="footer">
+  <div class="row">
+    <div class="col-md-4 panel panel-default">
+      <div class="panel-heading">
+        <h3>need indie.</h3>
+      </div>
+
+      <div class="panel-body">
+        Are you looking for an indie developer to fill a position
+        on your team? Then you've come to the right place! With
+        Indie For Hire you'll surely find someone fit for the task
+        at hand! Whether it be through match making or browsing the
+        right indie for you is out there waiting!
+      </div>
+    </div>
+
+    <div class="col-md-4 panel panel-default">
+      <div class="panel-heading">
+        <h3>work indie.</h3>
+      </div>
+
+      <div class="panel-body">
+        Need work? With Indie For Hire you can market yourself and be
+      	paired with groups in desperate need of your talent. A few
+      	short clicks and a bio will take you a long way! Be ready to get
+      	matched up with all kinds of different people and projects. Open
+      	your horizons!
+      </div>
+    </div>
+
+    <div class="col-md-4 panel panel-default">
+      <div class="panel-heading">
+        <h3>hire indie.</h3>
+      </div>
+
+      <div class="panel-body">
+        Do you have that one vacant spot on your team that you just can't
+      	seem to fill? Well there are plenty of skilled people out there
+      	looking for the chance to fill it! Find indie developers of all
+      	trades to take on your project and service your needs. Whether it
+      	be temporary or a long lasting position.
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="copyright">
+  <div class="row col-lg-12">
+    <br>
+    <br>
+
+    <p class="pull-right">©Copyright 2014 IndieForHire</p>
+    <br>
+  </div>
+</template>
