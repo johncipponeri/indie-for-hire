@@ -1,19 +1,25 @@
 <head>
   <title>Indie For Hire</title>
 
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
   <div class="container-full">
-    <div class="pull-right">
-      <h4 style="margin-right:10px;">Sign In / Sign Up</h4>
+    <div class="pull-right" style="margin-right:10px">
+      {{#if currentUser}}
+        <h4>Hey, {{currentUser.profile.name}}</h4>
+      {{else}}
+        <h4 data-toggle="modal" href="#registerFormModal">Sign In / Sign Up</h4>
+      {{/if}}
     </div>
 
-    <div class="row col-lg-12 text-center v-center">
-      <h1>INDIE FOR HIRE</h1>
-      <p class="lead">need indie. work indie. hire indie.</p>
+    <div class="row col-lg-12 v-center">
+      <div class="text-center">
+        <h1>INDIE FOR HIRE</h1>
+        <p class="lead">need indie. work indie. hire indie.</p>
+      </div>
+
       <br>
 
       {{> matchMakerForm}}
@@ -58,25 +64,30 @@
         {{> positionOptions}}
       </select>
 
+      <br>
+      <br>
+
       <h4>Seeking a ...</h4>
       <select class="form-control">
         {{> positionOptions}}
       </select>
 
-      <button class="btn btn-lg btn-primary" style="margin-top:20px;" type="button">
+      <button class="btn btn-lg btn-primary" id="matchButton" style="margin-top:20px;" type="button">
         Find a match!
       </button>
     </div>
   </form>
+
+  {{> registerFormModal}}
 </template>
 
 <template name="socialIcons">
   <div class="row col-lg-12 text-center v-center" style="font-size: 39pt;">
-    <a style="color: #efefef; text-decoration: none;" class="icon-google-plus" href="#"></a>
-   	<a style="color: #efefef; text-decoration: none;" class="icon-facebook" href="#"></a>
-  	<a style="color: #efefef; text-decoration: none;" class="icon-twitter" href="#"></a>
-    <a style="color: #efefef; text-decoration: none;" class="icon-github" href="#"></a>
-    <a style="color: #efefef; text-decoration: none;" class="icon-pinterest" href="#"></a>
+    <a style="color: #efefef; text-decoration: none;" class="fa fa-google-plus" href="#"></a>
+   	<a style="color: #efefef; text-decoration: none;" class="fa fa-facebook" href="#"></a>
+  	<a style="color: #efefef; text-decoration: none;" class="fa fa-twitter" href="#"></a>
+    <a style="color: #efefef; text-decoration: none;" class="fa fa-github" href="#"></a>
+    <a style="color: #efefef; text-decoration: none;" class="fa fa-reddit" href="#"></a>
   </div>
 </template>
 

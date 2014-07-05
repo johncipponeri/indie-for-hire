@@ -1,0 +1,50 @@
+<template name="registerFormModal">
+  <div class="modal fade v-center" id="registerFormModal" tabindex="-1" role="dialog" area-labelledby="registerFormModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        {{> _registerFormModalHeader}}
+        {{> _registerFormModalBody}}
+        {{> _registerFormModalFooter}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="_registerFormModalHeader">
+  <div class="modal-header" style="color: black;">
+    <a class="close" style="color: black;" data-dismiss="modal">x</a>
+    <h3>Register</h3>
+  </div>
+</template>
+
+<template name="_registerFormModalBody">
+  <div class="modal-body" style="color: black;">
+    <form id="registerForm" role="form">
+      <div class="form-group">
+        <label for="register-fullname">Full Name</label>
+        <input type="text" name="fullName" class="form-control" id="register-fullname" placeholder="Full Name"/>
+      </div>
+
+      <div class="form-group">
+        <label for="register-email">Email Address</label>
+        <input type="email" name="email" class="form-control" id="register-email" placeholder="Email Address" />
+      </div>
+
+      <div class="form-group">
+        <label for="register-password">Password</label>
+        <input type="password" name="password" class="form-control" id="register-password" placeholder="Password" />
+      </div>
+
+      <div class="form-group">
+        <label for="register-confirm-password">Confirm Password</label>
+        <input type="password" name="confirmPassword" class="form-control" id="register-confirm-password" placeholder="Confirm Password" />
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="_registerFormModalFooter">
+  <div class="modal-footer" style="color: black;">
+    <input type="submit" class="btn btn-primary" id="register-submit" value="Create" />
+  </div>
+</template>
