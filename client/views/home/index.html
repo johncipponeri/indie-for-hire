@@ -6,13 +6,7 @@
 
 <body>
   <div class="container-full">
-    <div class="pull-right" style="margin-right:10px">
-      {{#if currentUser}}
-        <h4>Hey, {{currentUser.profile.name}}</h4>
-      {{else}}
-        <h4 data-toggle="modal" href="#registerFormModal">Sign In / Sign Up</h4>
-      {{/if}}
-    </div>
+    {{> signIn}}
 
     <div class="row col-lg-12 v-center">
       <div class="text-center">
@@ -41,6 +35,16 @@
     {{> copyright}}
   </div>
 </body>
+
+<template name="signIn">
+  <div class="pull-right" style="margin-right:10px">
+    {{#if currentUser}}
+      <h4 id="logout">Logout</h4>
+    {{else}}
+      <h4 data-toggle="modal" href="#registerFormModal">Sign In / Sign Up</h4>
+    {{/if}}
+  </div>
+</template>
 
 <template name="positionOptions">
   <option>
