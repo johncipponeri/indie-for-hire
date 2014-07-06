@@ -4,7 +4,6 @@
       <div class="modal-content">
         {{> _registerFormModalHeader}}
         {{> _registerFormModalBody}}
-        {{> _registerFormModalFooter}}
       </div>
     </div>
   </div>
@@ -39,12 +38,10 @@
         <label for="register-confirm-password">Confirm Password</label>
         <input type="password" name="confirmPassword" class="form-control" id="register-confirm-password" placeholder="Confirm Password" />
       </div>
-    </form>
-  </div>
-</template>
 
-<template name="_registerFormModalFooter">
-  <div class="modal-footer" style="color: black;">
-    <input type="submit" class="btn btn-primary" id="register-submit" value="Create" />
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="register-submit">Next</button>
+      </div>
+    </form>
   </div>
 </template>
