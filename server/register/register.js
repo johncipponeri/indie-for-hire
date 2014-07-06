@@ -3,14 +3,16 @@ var trimInput = function (input) {
   return input.trim();
 }
 
-// Check for at least 2 names (TODO: Check name lengths)
+// Check for at least 2 names
 var isValidName = function (name) {
-  return (name.split(' ').length >= 1);
+  nameRegex = /^[a-z ,.'-]+$/i;
+  return (name.split(' ').length >= 1) && (nameRegex.test(name));
 }
 
-// Checks email against regex (TODO)
+// Checks email against regex
 var isValidEmail = function (email) {
-  return true; // Regex for valid email
+  var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return emailRegex.test(email);
 }
 
 // Checks if password length is at least 6 characters
