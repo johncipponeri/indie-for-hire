@@ -5,14 +5,27 @@ Template._registerFormModalBody.rendered = function () {
       invalid: "glyphicon glyphicon-remove",
       validating: "glyphicon glyphicon-refresh"
     },
+    live: "enabled",
+    submitHandler: function (validator, form, submitButton) {
+      if (validator.isValid()) {
+        $("#registerFormModal2").modal("show");
+        $("#registerFormModal").modal("hide");
+      }
+    },
     fields: {
       fullName: {
-        notEmpty: {
-          message: "Your full name is required!"
-        },
-        stringLength: {
-          min: 5,
-          message: "Please enter your full name!"
+        validators: {
+          notEmpty: {
+            message: "Your full name is required!"
+          },
+          stringLength: {
+            min: 5,
+            message: "Please enter your full name!"
+          },
+          regexp: {
+            regexp: /^[a-z ,.'-]+$/i,
+            message: 'Please enter your full name!'
+          }
         }
       },
       email: {
@@ -60,42 +73,3 @@ Template._registerFormModalBody.rendered = function () {
     }
   });
 }
-
-Template.registerFormModal.events({
-  "click #register-submit" : function (e, t) {
-    e.preventDefault();
-
-    // Get and Validate info (TODO)
-    var fullName = t.find("#register-fullname").value;
-        email    = t.find("#register-email").value;
-        passw    = t.find("#register-password").value;
-        cpassw   = t.find("#register-confirm-password").value;
-
-    $("#registerFormModal").modal("hide");
-
-    // Create account
-    Meteor.call("createAccount", {
-      fullName : fullName,
-      email    : email,
-      passw    : passw, // TODO: Encrypt
-      cpassw   : cpassw,
-    }, function (error, id) {
-      if (error)
-        return; // Tell them something went wrong
-
-      // Was account created?
-      if (!id)
-        return false; // Account exists
-
-      // Login
-      Meteor.loginWithPassword(email, passw, function (err) {
-        if (err)
-          console.log("Login Error: " + err); // Tell them something went wrong
-        else
-          console.log("Login Success: " + email);
-      });
-    });
-
-    return false;
-  }
-});
