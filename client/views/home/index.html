@@ -41,7 +41,7 @@
     {{#if currentUser}}
       <h4 id="logout">Logout</h4>
     {{else}}
-      <h4 data-toggle="modal" href="#registerFormModal">Sign In / Sign Up</h4>
+      <h4 data-toggle="modal" href="#loginFormModal">Sign In / Sign Up</h4>
     {{/if}}
   </div>
 </template>
@@ -82,6 +82,7 @@
     </div>
   </form>
 
+  {{> loginFormModal}}
   {{> registerFormModal}}
   {{> registerFormModal2}}
 </template>

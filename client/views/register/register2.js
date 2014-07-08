@@ -1,107 +1,84 @@
 Template._registerFormModalBody2.rendered = function () {
-  $("#registerForm").bootstrapValidator({
+  $("#registerForm2").bootstrapValidator({
     feedbackIcons: {
       valid: "glyphicon glyphicon-ok",
       invalid: "glyphicon glyphicon-remove",
       validating: "glyphicon glyphicon-refresh"
     },
+    live: "enabled",
+    submitHandler: function (validator, form, submitButton) {
+      if (validator.isValid()) {
+        // Get info
+        var fullName = Session.get("fullName");
+            email    = Session.get("email");
+            passw    = Session.get("passw");
+
+        var avatar_url    = $("#register-avatar-url").val(),
+            primary_skill = $("#register-primary-skill").val(),
+            headline      = $("#register-headline").val(),
+            bio           = $("#register-bio").val(),
+            personal_url  = $("#register-personal-url").val();
+
+        //$("#registerFormModal").modal("hide");
+
+        // Create account
+        Meteor.call("createAccount", {
+          fullName      : fullName,
+          email         : email,
+          passw         : passw, // TODO: Encrypt
+          avatar_url    : avatar_url,
+          primary_skill : primary_skill,
+          headline      : headline,
+          bio           : bio,
+          personal_url  : personal_url
+        }, function (error, id) {
+          if (error) {
+            console.log("Error: " + error);
+            return; // Tell them something went wrong
+          }
+
+          // Was account created?
+          if (!id) {
+            console.log("!id");
+            return; // Account exists
+          }
+
+          // Login
+          Meteor.loginWithPassword(email, passw, function (err) {
+            if (err)
+              console.log("Login Error: " + err); // Tell them something went wrong
+            else
+              console.log("Login Success: " + email);
+          });
+        });
+      }
+    },
     fields: {
-      fullName: {
+      avatarUrl: {
         validators: {
           notEmpty: {
-            message: "Your full name is required!"
+            message: "An avatar url is required!"
           },
-          stringLength: {
-            min: 5,
-            message: "Please enter your full name!"
-          },
-          regexp: {
-            regexp: /^[a-z ,.'-]+$/i,
-            message: 'Please enter your full name!'
-          }
         }
       },
-      email: {
+      headline: {
         validators: {
           notEmpty: {
-            message: "An email address is required!"
+            message: "A headline is required!"
           },
-          emailAddress: {
-            message: "Please enter a valid email address!"
-          }
         }
       },
-      password: {
+      bio: {
         validators: {
           notEmpty: {
-            message: "A password is required!"
+            message: "A bio is required!"
           },
           stringLength: {
-            min: 6,
-            max: 30,
-            message: "Your password must be between 6 and 30 characters!"
-          },
-          identical: {
-            field: "confirmPassword",
-            message: "Your passwords don't match!"
-          }
-        }
-      },
-      confirmPassword: {
-        validators: {
-          notEmpty: {
-            message: "A password is required!"
-          },
-          stringLength: {
-            min: 6,
-            max: 30,
-            message: "Your password must be between 6 and 30 characters!"
-          },
-          identical: {
-            field: "password",
-            message: "Your passwords don't match!"
+            max: 1000,
+            message: "Your bio must be 1000 characters or less!"
           }
         }
       }
     }
   });
 }
-
-Template.registerFormModal2.events({
-  "click #register-submit" : function (e, t) {
-    e.preventDefault();
-
-    // Get info
-    var fullName = t.find("#register-fullname").value;
-        email    = t.find("#register-email").value;
-        passw    = t.find("#register-password").value;
-        cpassw   = t.find("#register-confirm-password").value;
-
-    //$("#registerFormModal").modal("hide");
-
-    // Create account
-    Meteor.call("createAccount", {
-      fullName : fullName,
-      email    : email,
-      passw    : passw, // TODO: Encrypt
-      cpassw   : cpassw,
-    }, function (error, id) {
-      if (error)
-        return; // Tell them something went wrong
-
-      // Was account created?
-      if (!id)
-        return false; // Account exists
-
-      // Login
-      Meteor.loginWithPassword(email, passw, function (err) {
-        if (err)
-          console.log("Login Error: " + err); // Tell them something went wrong
-        else
-          console.log("Login Success: " + email);
-      });
-    });
-
-    return false;
-  }
-});

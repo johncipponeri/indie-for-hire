@@ -20,12 +20,39 @@
   <div class="modal-body" style="color: black;">
     <form id="registerForm2" role="form">
       <div class="form-group">
-        <label for="register-fullname">Full Name</label>
-        <input type="text" name="fullName" class="form-control" id="register-fullname" placeholder="Full Name" />
+        <label for="register-avatar-img">Avatar Preview</label>
+        <img src="http://placehold.it/140x140" name="avatarImg" id="register-avatar-img" class="img-responsive"/>
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" id="register-submit">Next</button>
+        <label for="register-avatar-url">Avatar URL</label>
+        <input type="url" name="avatarUrl" class="form-control" id="register-avatar-url" placeholder="http://imgur.com/awesome_avatar.jpg" />
+      </div>
+
+      <div class="form-group">
+        <label for="register-primary-skill">Primary Skill</label>
+        <select class="form-control">
+          {{> positionOptions}}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="register-headline">Headline</label>
+        <input type="text" name="headline" class="form-control" id="register-headline" placeholder="MEAN Stack Developer" />
+      </div>
+
+      <div class="form-group">
+        <label for="register-bio">Bio (1000 Character Limit)</label>
+        <input type="textarea" name="bio" class="form-control" id="register-bio" placeholder="I am an amazing individual with reputable skills." />
+      </div>
+
+      <div class="form-group">
+        <label for="register-personal-url">Personal Site</label>
+        <input type="url" name="personalUrl" class="form-control" id="register-personal-url" placeholder="http://github.com/cool_guy" />
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="register-submit">Create</button>
       </div>
     </form>
   </div>

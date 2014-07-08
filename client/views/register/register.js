@@ -8,6 +8,10 @@ Template._registerFormModalBody.rendered = function () {
     live: "enabled",
     submitHandler: function (validator, form, submitButton) {
       if (validator.isValid()) {
+        Session.set("fullName", $("#register-fullname").val());
+        Session.set("email", $("#register-email").val());
+        Session.set("passw", $("#register-password").val());
+
         $("#registerFormModal2").modal("show");
         $("#registerFormModal").modal("hide");
       }
