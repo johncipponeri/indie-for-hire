@@ -47,3 +47,11 @@ Template._loginFormModalBody.rendered = function () {
     }
   });
 }
+
+Template._loginFormModalBody.events({
+  "click #login-register" : function (e, t) {
+    e.preventDefault();
+
+    $("#loginFormModal").modal("hide");
+  }
+});
