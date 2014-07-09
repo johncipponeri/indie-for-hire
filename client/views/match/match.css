@@ -1,0 +1,54 @@
+#left-content{
+	padding: 0 15px;
+}
+
+#pages{
+	width: 100%;
+
+}
+
+#people {
+	width: 100%;
+}
+
+#post-body {
+    /*float: left;*/
+    margin-left: 110px;
+}
+
+#post-user {
+    font-size: 20px;
+    color: #28AFEC;
+}
+
+#post-skills {
+	font-size: 14px;
+}
+
+#image {
+    margin-right: 10px;
+}
+
+#post-content {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #8c8c8c;
+    word-wrap:break-word;
+}
+#postt {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cecece;
+}
+
+#post-links {
+	font-size: 25px;
+}
+
+i.fa.fa-deviantart {
+	color: #506256;
+}
+
+i.fa.fa-github {
+	color: 000;
+}

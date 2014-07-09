@@ -76,7 +76,7 @@
         {{> positionOptions}}
       </select>
 
-      <button class="btn btn-lg btn-primary" id="matchButton" style="margin-top:20px;" type="button">
+      <button data-toggle="modal" href="#matchModal" class="btn btn-lg btn-primary" id="matchButton" style="margin-top:20px;" type="button">
         Find a match!
       </button>
     </div>
@@ -85,6 +85,7 @@
   {{> loginFormModal}}
   {{> registerFormModal}}
   {{> registerFormModal2}}
+  {{> matchModal}}
 </template>
 
 <template name="socialIcons">
