@@ -14,7 +14,7 @@ Template._registerFormModalBody2.rendered = function () {
             passw    = Session.get("passw");
 
         var avatar_url    = $("#register-avatar-url").val(),
-            primary_skill = $("#register-primary-skill").val(),
+            primary_skill = $("#register-primary-skill :selected").val().trim(),
             headline      = $("#register-headline").val(),
             bio           = $("#register-bio").val(),
             personal_url  = $("#register-personal-url").val();

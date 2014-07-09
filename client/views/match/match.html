@@ -1,6 +1,43 @@
+<template name="positionOptions">
+  <option>
+    Programmer
+  </option>
+
+  <option>
+    Graphics Designer
+  </option>
+
+  <option>
+    Writer
+  </option>
+</template>
+
+<template name="matchMakerForm">
+  <form class="col-lg-12">
+    <div class="input-group" style="width:400px;text-align:center;margin:0 auto;">
+      <h4>I am a ...</h4>
+      <select class="form-control">
+        {{> positionOptions}}
+      </select>
+
+      <br>
+      <br>
+
+      <h4>Seeking a ...</h4>
+      <select id="matchTypeSelection" class="form-control">
+        {{> positionOptions}}
+      </select>
+
+      <button data-toggle="modal" href="#matchModal" class="btn btn-lg btn-primary" id="matchButton" style="margin-top:20px;" type="button">
+        Find a match!
+      </button>
+    </div>
+  </form>
+</template>
+
 <template name="matchModal">
   <div class="modal fade v-center" id="matchModal" tabindex="-1" role="dialog" area-labelledby="matchModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
       <div class="modal-content">
         {{> _matchModalHeader}}
         {{> _matchModalBody}}
@@ -18,7 +55,7 @@
 
 <template name="_matchModalBody">
   <div class="modal-body row" style="color: black;">
-    <!-- Start the left column -->
+    <!-- Start the left column
     <div id="left" class="col-md-4">
         <div id="left-content">
             <form role="form">
@@ -44,85 +81,55 @@
             </form>
         </div>
     </div>
-    <!-- End the left column -->
+    End the left column -->
 
     <!-- Start the Right Column -->
-    <div id="right" class="col-md-8">
-        <div id="pages">
-            <div id="pagenumb">
-                <ul class="pagination">
-                  <li><a href="#">&laquo;</a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">&raquo;</a></li>
-                </ul>
-            </div>
+    <div id="right" class="col-md-12">
+      <div id="people">
+        {{#each results}}
+          {{> matchResult}}
+        {{/each}}
+      </div>
+
+      <div id="pages" class="text-center">
+        <div id="pagenumb">
+          <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
         </div>
-
-        <div id="people">
-            <div id="postt">
-                <div id="image">
-                    <img src="http://placehold.it/100" class="img-rounded pull-left">
-                </div>
-
-                <div id="post-body">
-                    <div id="container-feedwho">
-                        <div id="post-user">Gianni D.</div>
-                        <div id="post-skills">Graphics Designer. Web Designer. Insufficient Programmer.</div>
-                    </div>
-
-                    <div id="post-content">
-                        <p>Dedicated individual interested in experimenting with Javascript and pushing the boundries of web related design.</p>
-                    </div>
-
-                    <div id="post-links">
-                        <i class="fa fa-github"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div id="postt">
-                <div id="image">
-                    <img src="http://placehold.it/100" class="img-rounded pull-left">
-                </div>
-
-                <div id="post-body">
-                    <div id="container-feedwho">
-                        <div id="post-user">John C.</div>
-                        <div id="post-skills">Full Stack Developer</div>
-                    </div>
-
-                    <div id="post-content">
-                        <p>Always staying up to date on the newest technologies I am a full stack developer, if you need it I can get it done.</p>
-                    </div>
-
-                    <div id="post-links">
-                        <i class="fa fa-github"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div id="postt">
-                <div id="image">
-                    <img src="http://placehold.it/100" class="img-rounded pull-left">
-                </div>
-
-                <div id="post-body">
-                    <div id="container-feedwho">
-                        <div id="post-user">Andre F.</div>
-                        <div id="post-skills">I is SrGrafo, Artist</div>
-                    </div>
-
-                    <div id="post-content">
-                        <p>Ajajajajajajajajajajajajajajajajajaja everything is bananas</p>
-                    </div>
-
-                    <div id="post-links">
-                        <i class="fa fa-deviantart"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
     <!-- End the Right Column -->
+  </div>
+</template>
+
+<template name="matchResult">
+  <div id="postt">
+    <div id="image">
+      <img src={{profile.avatar_url}} class="img-rounded pull-left">
+    </div>
+
+    <div id="post-body">
+      <div id="container-feedwho">
+        <div id="post-user">{{profile.name}}</div>
+        <div id="post-skills">{{profile.headline}}</div>
+      </div>
+
+      <div id="post-content">
+        <p>{{profile.bio}}</p>
+      </div>
+
+      <div id="post-links">
+        <a href="mailto:{{profile.email}}">
+          <i class="fa fa-envelope-o"></i>
+        </a>
+        <!--
+          <i class="fa fa-github"></i>
+          <i class="fa fa-deviantart"></i>
+        -->
+      </div>
+    </div>
   </div>
 </template>
