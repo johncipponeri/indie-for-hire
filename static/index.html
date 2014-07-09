@@ -1,0 +1,259 @@
+<html>
+  <head>
+    <title>Indie For Hire</title>
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container-full">
+      <div class="pull-right" style="margin-right:10px">
+        <h4 data-toggle="modal" href="#loginFormModal">Sign In / Sign Up</h4>
+      </div>
+
+      <div class="row col-lg-12 v-center">
+        <div class="text-center">
+          <h1>INDIE FOR HIRE</h1>
+          <p class="lead">need indie. work indie. hire indie.</p>
+        </div>
+
+        <br>
+
+        <form class="col-lg-12">
+          <div class="input-group" style="width:400px;text-align:center;margin:0 auto;">
+            <h4>I am a ...</h4>
+            <select class="form-control">
+              <option>
+                Programmer
+              </option>
+
+              <option>
+                Graphics Designer
+              </option>
+
+              <option>
+                Writer
+              </option>
+            </select>
+
+            <br>
+            <br>
+
+            <h4>Seeking a ...</h4>
+            <select class="form-control">
+              <option>
+                Programmer
+              </option>
+
+              <option>
+                Graphics Designer
+              </option>
+
+              <option>
+                Writer
+              </option>
+            </select>
+
+            <button class="btn btn-lg btn-primary" id="matchButton" style="margin-top:20px;" type="button">
+              Find a match!
+            </button>
+          </div>
+        </form>
+
+        <div class="modal fade v-center" id="loginFormModal" tabindex="-1" role="dialog" area-labelledby="loginFormModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="color: black;">
+                <a class="close" style="color: black;" data-dismiss="modal">x</a>
+                <h3>Login</h3>
+              </div>
+
+              <div class="modal-body" style="color: black;">
+                <form id="loginForm" role="form">
+                  <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" name="email" class="form-control" id="login-email" placeholder="Email Address" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" name="password" class="form-control" id="login-password" placeholder="Password" />
+                  </div>
+
+                  <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary" id="login-submit">Login</button>
+                    or
+                    <button data-toggle="modal" href="#registerFormModal" class="btn btn-primary" id="login-register">Register</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade v-center" id="registerFormModal" tabindex="-1" role="dialog" area-labelledby="registerFormModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="color: black;">
+                <a class="close" style="color: black;" data-dismiss="modal">x</a>
+                <h3>Register</h3>
+              </div>
+
+              <div class="modal-body" style="color: black;">
+                <form id="registerForm" role="form">
+                  <div class="form-group">
+                    <label for="register-fullname">Full Name</label>
+                    <input type="text" name="fullName" class="form-control" id="register-fullname" placeholder="Full Name" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" name="email" class="form-control" id="register-email" placeholder="Email Address" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" name="password" class="form-control" id="register-password" placeholder="Password" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-confirm-password">Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="form-control" id="register-confirm-password" placeholder="Confirm Password" />
+                  </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="register-next">Next</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade v-center" id="registerFormModal2" tabindex="-1" role="dialog" area-labelledby="registerFormModal2" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="color: black;">
+                <a class="close" style="color: black;" data-dismiss="modal">x</a>
+                <h3>Create a Profile</h3>
+              </div>
+
+              <div class="modal-body" style="color: black;">
+                <form id="registerForm2" role="form">
+                  <div class="form-group">
+                    <label for="register-avatar-img">Avatar Preview</label>
+                    <img src="http://placehold.it/140x140" name="avatarImg" id="register-avatar-img" class="img-responsive"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-avatar-url">Avatar URL</label>
+                    <input type="url" name="avatarUrl" class="form-control" id="register-avatar-url" placeholder="http://imgur.com/awesome_avatar.jpg" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-primary-skill">Primary Skill</label>
+                    <select class="form-control">
+                      {{> positionOptions}}
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-headline">Headline</label>
+                    <input type="text" name="headline" class="form-control" id="register-headline" placeholder="MEAN Stack Developer" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-bio">Bio (1000 Character Limit)</label>
+                    <input type="textarea" name="bio" class="form-control" id="register-bio" placeholder="I am an amazing individual with reputable skills." />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="register-personal-url">Personal Site</label>
+                    <input type="url" name="personalUrl" class="form-control" id="register-personal-url" placeholder="http://github.com/cool_guy" />
+                  </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="register-submit">Create</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /row -->
+
+      <div class="row col-lg-12 text-center v-center" style="font-size: 39pt;">
+        <a style="color: #efefef; text-decoration: none;" class="fa fa-google-plus" href="#"></a>
+         <a style="color: #efefef; text-decoration: none;" class="fa fa-facebook" href="#"></a>
+        <a style="color: #efefef; text-decoration: none;" class="fa fa-twitter" href="#"></a>
+        <a style="color: #efefef; text-decoration: none;" class="fa fa-github" href="#"></a>
+        <a style="color: #efefef; text-decoration: none;" class="fa fa-reddit" href="#"></a>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div><!-- /container-full -->
+
+    <div class="container">
+      <hr>
+
+      <div class="row">
+        <div class="col-md-4 panel panel-default">
+          <div class="panel-heading">
+            <h3>need indie.</h3>
+          </div>
+
+          <div class="panel-body">
+            Are you looking for an indie developer to fill a position
+            on your team? Then you've come to the right place! With
+            Indie For Hire you'll surely find someone fit for the task
+            at hand! Whether it be through match making or browsing the
+            right indie for you is out there waiting!
+          </div>
+        </div>
+
+        <div class="col-md-4 panel panel-default">
+          <div class="panel-heading">
+            <h3>work indie.</h3>
+          </div>
+
+          <div class="panel-body">
+            Need work? With Indie For Hire you can market yourself and be
+            paired with groups in desperate need of your talent. A few
+            short clicks and a bio will take you a long way! Be ready to get
+            matched up with all kinds of different people and projects. Open
+            your horizons!
+          </div>
+        </div>
+
+        <div class="col-md-4 panel panel-default">
+          <div class="panel-heading">
+            <h3>hire indie.</h3>
+          </div>
+
+          <div class="panel-body">
+            Do you have that one vacant spot on your team that you just can't
+            seem to fill? Well there are plenty of skilled people out there
+            looking for the chance to fill it! Find indie developers of all
+            trades to take on your project and service your needs. Whether it
+            be temporary or a long lasting position.
+          </div>
+        </div>
+      </div>
+
+      <div class="row col-lg-12">
+        <br>
+        <br>
+
+        <p class="pull-right">©Copyright 2014 IndieForHire</p>
+        <br>
+      </div>
+    </div>
+  </body>
+</html>
